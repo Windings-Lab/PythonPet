@@ -1,5 +1,8 @@
 import pytest
-from protobuf.out import addressbook_pb2
+from protobuf.out.addressbook_pb2 import Person
+from protobuf.src import addressbook_api
+
+addressbook_path = ".\\addressbook.txt"
 
 
 @pytest.fixture(autouse=True, scope='session')
@@ -25,12 +28,31 @@ def test_checkbox():
 
 
 def test_person():
-    person = addressbook_pb2.Person()
+    person = Person()
     person.id = 1234
     person.name = "John Doe"
     person.email = "jdoe@example.com"
     phone = person.phones.add()
     phone.number = "555-4321"
-    phone.type = addressbook_pb2.Person.PHONE_TYPE_HOME
+    phone.type = Person.PHONE_TYPE_HOME
 
     assert person.IsInitialized()
+
+
+@pytest.mark.xfail(raises=BaseException)
+def test_write_to_addressbook():
+    person = Person()
+    person.id = 1234
+    person.name = "John Doe"
+    person.email = "jdoe@example.com"
+    phone = person.phones.add()
+    phone.number = "555-4321"
+    phone.type = Person.PHONE_TYPE_HOME
+
+    addressbook_api.write(addressbook_path, person)
+
+
+@pytest.mark.xfail(raises=BaseException)
+def test_read_addressbook():
+    addressbook_api.read(addressbook_path)
+

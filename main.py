@@ -1,14 +1,9 @@
-from protobuf.out import addressbook_pb2
+from protobuf.src import addressbook_api
 
 
 def main():
-    person = addressbook_pb2.Person()
-    person.id = 1234
-    person.name = "John Doe"
-    person.email = "jdoe@example.com"
-    phone = person.phones.add()
-    phone.number = "555-4321"
-    phone.type = addressbook_pb2.Person.PHONE_TYPE_HOME
+    addressbook_path = ".\\addressbook.txt"
+    addressbook_api.read(addressbook_path)
 
 
 if __name__ == '__main__':
