@@ -1,7 +1,15 @@
-from init import driver
-from TestCases.checkboxes import checkbox_test
+from protobuf.out import addressbook_pb2
 
-checkbox_test(True, False)
 
-input(driver.title)
-driver.quit()
+def main():
+    person = addressbook_pb2.Person()
+    person.id = 1234
+    person.name = "John Doe"
+    person.email = "jdoe@example.com"
+    phone = person.phones.add()
+    phone.number = "555-4321"
+    phone.type = addressbook_pb2.Person.PHONE_TYPE_HOME
+
+
+if __name__ == '__main__':
+    main()

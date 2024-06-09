@@ -1,7 +1,6 @@
-from init import open_link
-from init import driver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.remote.webelement import WebElement
+from selenium_loader import open_link
+from selenium_loader import get_driver
+from selenium_loader import WebElement
 
 link_name = "https://the-internet.herokuapp.com/checkboxes"
 
@@ -16,9 +15,11 @@ def check(checkbox: WebElement, value: bool):
 
 
 def checkbox_test(first: bool, second: bool):
+    from selenium.webdriver.common.by import By
+
     open_link(link_name, (By.ID, "checkboxes"))
 
-    checkboxes = driver.find_elements(by=By.CSS_SELECTOR, value="input[type='checkbox']")
+    checkboxes = get_driver().find_elements(by=By.CSS_SELECTOR, value="input[type='checkbox']")
 
     checkbox_id = 0
     for checkbox in checkboxes:
