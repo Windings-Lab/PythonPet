@@ -1,9 +1,8 @@
-from protobuf.src import addressbook_api
+import grpc_server
 
 
 def main():
-    addressbook_path = ".\\addressbook.txt"
-    addressbook_api.read(addressbook_path)
+    grpc_server.serve()
 
 
 if __name__ == '__main__':

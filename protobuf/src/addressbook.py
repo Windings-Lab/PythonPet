@@ -2,14 +2,19 @@ from protobuf.out.addressbook_pb2 import AddressBook
 from protobuf.out.addressbook_pb2 import Person
 
 
-def write(path: str, person: Person):
+def get_address_book(path: str):
     address_book = AddressBook()
     try:
         with open(path, 'rb') as f:
             address_book.ParseFromString(f.read())
     except IOError:
-        print(f"{path}: Could not open file. Creating a new one.")
+        print(f"{path}: file not exists")
 
+    return address_book
+
+
+def write(path: str, person: Person):
+    address_book = get_address_book(path)
     address_book.people.append(person)
 
     with open(path, 'wb') as f:
@@ -17,12 +22,7 @@ def write(path: str, person: Person):
 
 
 def write_with_prompt(path: str):
-    address_book = AddressBook()
-    try:
-        with open(path, 'rb') as f:
-            address_book.ParseFromString(f.read())
-    except IOError:
-        print(f"{path}: Could not open file. Creating a new one.")
+    address_book = get_address_book(path)
 
     prompt_for_address(address_book.people.add())
 
@@ -31,11 +31,18 @@ def write_with_prompt(path: str):
 
 
 def read(path: str):
-    address_book = AddressBook()
-    with open(path, 'rb') as f:
-        address_book.ParseFromString(f.read())
+    address_book = get_address_book(path)
 
     list_people(address_book)
+
+
+def get_person_by_id(path: str, person_id: int):
+    address_book = get_address_book(path)
+    for person in address_book.people:
+        if person.id == person_id:
+            return person
+
+    return None
 
 
 def list_people(address_book: AddressBook):

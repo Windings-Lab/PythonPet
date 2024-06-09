@@ -1,6 +1,6 @@
 import pytest
 from protobuf.out.addressbook_pb2 import Person
-from protobuf.src import addressbook_api
+from protobuf.src import addressbook
 
 addressbook_path = ".\\addressbook.txt"
 
@@ -49,10 +49,10 @@ def test_write_to_addressbook():
     phone.number = "555-4321"
     phone.type = Person.PHONE_TYPE_HOME
 
-    addressbook_api.write(addressbook_path, person)
+    addressbook.write(addressbook_path, person)
 
 
 @pytest.mark.xfail(raises=BaseException)
 def test_read_addressbook():
-    addressbook_api.read(addressbook_path)
+    addressbook.read(addressbook_path)
 

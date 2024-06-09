@@ -6,6 +6,20 @@ from typing import ClassVar as _ClassVar, Iterable as _Iterable, Mapping as _Map
 
 DESCRIPTOR: _descriptor.FileDescriptor
 
+class PersonResponse(_message.Message):
+    __slots__ = ("message", "person")
+    MESSAGE_FIELD_NUMBER: _ClassVar[int]
+    PERSON_FIELD_NUMBER: _ClassVar[int]
+    message: str
+    person: Person
+    def __init__(self, message: _Optional[str] = ..., person: _Optional[_Union[Person, _Mapping]] = ...) -> None: ...
+
+class PersonId(_message.Message):
+    __slots__ = ("id",)
+    ID_FIELD_NUMBER: _ClassVar[int]
+    id: int
+    def __init__(self, id: _Optional[int] = ...) -> None: ...
+
 class Person(_message.Message):
     __slots__ = ("name", "id", "email", "phones")
     class PhoneType(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):

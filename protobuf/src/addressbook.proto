@@ -2,6 +2,23 @@ syntax = "proto3";
 
 package tutorial;
 
+service PersonRequester
+{
+    rpc AddPerson(Person) returns (PersonResponse) {}
+    rpc GetPerson(PersonId) returns (PersonResponse) {}
+}
+
+message PersonResponse
+{
+    string message = 1;
+    Person person = 2;
+}
+
+message PersonId
+{
+    int32 id = 1;
+}
+
 message Person
 {
     string name = 1;
