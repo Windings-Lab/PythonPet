@@ -1,8 +1,4 @@
-from selenium_loader import get_driver
-from selenium_loader import open_link
-from selenium_loader import EC
-from selenium_loader import WebDriverWait
-
+from selenium_loader import get_driver, open_link, EC, WebDriverWait
 from selenium.webdriver.common.by import By
 
 

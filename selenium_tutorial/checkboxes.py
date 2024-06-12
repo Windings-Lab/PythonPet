@@ -1,6 +1,4 @@
-from selenium_loader import open_link
-from selenium_loader import get_driver
-from selenium_loader import WebElement
+from selenium_loader import open_link, get_driver, WebElement
 
 link_name = "https://the-internet.herokuapp.com/checkboxes"
 

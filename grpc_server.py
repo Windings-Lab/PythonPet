@@ -2,9 +2,7 @@ from concurrent import futures
 import logging
 
 import grpc
-from protobuf.out import addressbook_pb2_grpc
-from protobuf.out import addressbook_pb2
-
+from protobuf.out import addressbook_pb2_grpc, addressbook_pb2
 from protobuf.src import addressbook
 
 addressbook_path = ".\\addressbook.txt"

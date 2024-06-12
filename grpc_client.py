@@ -3,8 +3,7 @@ from __future__ import print_function
 import logging
 
 import grpc
-from protobuf.out import addressbook_pb2_grpc
-from protobuf.out import addressbook_pb2
+from protobuf.out import addressbook_pb2_grpc, addressbook_pb2
 
 
 def run():

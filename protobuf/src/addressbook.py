@@ -1,5 +1,4 @@
-from protobuf.out.addressbook_pb2 import AddressBook
-from protobuf.out.addressbook_pb2 import Person
+from protobuf.out.addressbook_pb2 import AddressBook, Person
 
 
 def get_address_book(path: str):
